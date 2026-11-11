@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import ProductCarousel from '../../components/ProductCarousel.astro';
+import { site } from '../../config/site';
+import { getUi, localeParams, localePath, useTranslations } from '../../i18n/config';
+import { getProducts } from '../../lib/products';
+
+export function getStaticPaths() { return localeParams(); }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const ui = getUi(locale);
+const products = await getProducts();
+const picked = products.filter((p) => p.featured);
+const selection = (picked.length ? picked : products).slice(0, 8);
+const art = products.slice(0, 3);
+---
+<Base locale={locale} path="/">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>{t('hero.title')}</h1>
+        <p>{t('hero.text')}</p>
+        <div class="hero-actions">
+          <a class="btn" href={localePath(locale, '/products/')}>{t('hero.quote')}</a>
+          <a class="btn ghost" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
+        </div>
+        <ul class="proof">
+          {ui.hero.facts.map((f: { title: string; text: string }) => (
+            <li><strong>{f.title}</strong><span>{f.text}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="hero-panel" aria-hidden="true">
+        <div class="hero-art">
+          {art.map((p) => (
+            <div><Image src={p.image} alt="" widths={[200, 400]} sizes="(min-width: 800px) 14vw, 28vw" format="webp" loading="lazy" /></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2>{ui.how.title}</h2>
+      <ol class="steps">
+        {ui.how.steps.map((s: { title: string; text: string }) => (
+          <li><h3>{s.title}</h3><p style="margin:0">{s.text}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <ProductCarousel products={selection} locale={locale} />
+    </div>
+  </section>
+
+  <section class="section contact-band" id="contact">
+    <div class="wrap">
+      <h2>{t('contact.title')}</h2>
+      <p>{t('contact.text')}</p>
+      <dl class="contact-grid">
+        <div><dt>{t('contact.phone')}</dt><dd><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></dd></div>
+        <div><dt>{t('contact.email')}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+        <div><dt>{t('contact.hours')}</dt><dd>{site.hours} <small>({site.timeZoneLabel})</small></dd></div>
+      </dl>
+      <div class="contact-actions">
+        <a class="btn sky" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
+        <a class="btn outline-light" href={`mailto:${site.email}`}>{t('contact.email')}</a>
+      </div>
+    </div>
+  </section>
+</Base>

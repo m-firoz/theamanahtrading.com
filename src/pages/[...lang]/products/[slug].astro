@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import AddToQuote from '../../../components/AddToQuote';
+import { site } from '../../../config/site';
+import { locales, defaultLocale, localePath, useTranslations } from '../../../i18n/config';
+import { getProducts, getCategories, categoryName } from '../../../lib/products';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return locales.flatMap((locale) =>
+    products.map((product) => ({
+      params: { lang: locale === defaultLocale ? undefined : locale, slug: product.slug },
+      props: { locale, product },
+    })),
+  );
+}
+const { locale, product: p } = Astro.props;
+const t = useTranslations(locale);
+const cats = await getCategories();
+const cat = cats.find((c) => c.id === p.category)!;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Product',
+  name: p.name, sku: p.sku, category: categoryName(cat, locale),
+  url: new URL(localePath(locale, `/products/${p.slug}/`), site.url).href,
+};
+---
+<Base locale={locale} path={`/products/${p.slug}/`} title={p.name} description={`${p.name}: ${p.unitWeight.value} ${t(`units.${p.unitWeight.unit}`)}, ${t('products.moq')} ${p.moq.value} ${t(`units.${p.moq.unit}`)}.`}>
+  <section class="section">
+    <div class="wrap">
+      <p class="crumbs"><a href={localePath(locale, '/products/')}>{t('products.back')}</a></p>
+      <div class="product-page">
+        <div class="pcard"><div class="pic"><Image src={p.image} alt={p.name} widths={[480, 960]} sizes="(min-width: 800px) 45vw, 90vw" format="webp" loading="eager" /></div></div>
+        <div>
+          <h1>{p.name}</h1>
+          <p class="muted">{categoryName(cat, locale)}</p>
+          <dl class="facts" style="font-size:1.05rem;max-width:26rem">
+            <div><dt>{t('products.sku')}</dt><dd>{p.sku}</dd></div>
+            <div><dt>{t('products.weight')}</dt><dd>{p.unitWeight.value} {t(`units.${p.unitWeight.unit}`)}</dd></div>
+            <div><dt>{t('products.moq')}</dt><dd>{p.moq.value} {t(`units.${p.moq.unit}`)}</dd></div>
+          </dl>
+          <p style="margin-top:1rem"><span class="tag">{t('products.price')}</span></p>
+          <div class="row">
+            <AddToQuote client:load sku={p.sku} moq={p.moq.value} add={t('products.add')} inQuote={t('products.inQuote')} href={localePath(locale, '/quote/')} />
+            <a class="btn ghost small" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</Base>

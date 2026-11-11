@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getUi, localeParams, useTranslations } from '../../i18n/config';
+
+export function getStaticPaths() { return localeParams(); }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const ui = getUi(locale);
+---
+<Base locale={locale} path="/privacy/" title={t('privacy.title')}>
+  <section class="section">
+    <div class="wrap">
+      <h1>{t('privacy.title')}</h1>
+      <p class="alert">{t('privacy.draft')}</p>
+      {ui.privacy.sections.map((s: { title: string; text: string }) => (
+        <section style="margin-top:1.5rem"><h2 style="font-size:1.3rem">{s.title}</h2><p>{s.text}</p></section>
+      ))}
+    </div>
+  </section>
+</Base>

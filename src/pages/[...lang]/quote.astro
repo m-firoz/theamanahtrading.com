@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import QuoteList from '../../components/QuoteList';
+import { site } from '../../config/site';
+import { getUi, localeParams, localePath, useTranslations } from '../../i18n/config';
+import { getProducts } from '../../lib/products';
+
+export function getStaticPaths() { return localeParams(); }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const ui = getUi(locale);
+const products = await getProducts();
+const catalog = products.map((p) => ({
+  sku: p.sku, name: p.name,
+  weight: `${p.unitWeight.value} ${t(`units.${p.unitWeight.unit}`)}`,
+  moqValue: p.moq.value, moqUnit: p.moq.unit,
+}));
+const { name, email, phoneDisplay, phoneTel, hours, timeZone, timeZoneLabel, formKey, countries } = site;
+---
+<Base locale={locale} path="/quote/" title={t('quote.title')} noindex>
+  <section class="section">
+    <div class="wrap">
+      <h1 class="no-print">{t('quote.title')}</h1>
+      <QuoteList client:load locale={locale} catalog={catalog} labels={ui.quote} units={ui.units}
+        site={{ name, email, phoneDisplay, phoneTel, hours, timeZone, timeZoneLabel, formKey }}
+        countries={[...countries]}
+        hrefs={{ products: localePath(locale, '/products/'), privacy: localePath(locale, '/privacy/') }}
+        dev={import.meta.env.DEV} />
+    </div>
+  </section>
+</Base>

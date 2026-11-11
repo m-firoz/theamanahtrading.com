@@ -1,0 +1,44 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { localeParams, useTranslations } from '../../../i18n/config';
+import { getProducts, getCategories, categoryName } from '../../../lib/products';
+
+export function getStaticPaths() { return localeParams(); }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const [products, categories] = await Promise.all([getProducts(), getCategories()]);
+---
+<Base locale={locale} path="/products/" title={t('products.title')}>
+  <section class="section">
+    <div class="wrap">
+      <h1>{t('products.title')}</h1>
+      <p class="muted">{t('products.intro')}</p>
+      <ul class="chips" id="filters" hidden>
+        <li><button type="button" class="chip" data-filter="all" aria-pressed="true">{t('categories.all')}</button></li>
+        {categories.map((c) => (
+          <li><button type="button" class="chip" data-filter={c.id} aria-pressed="false">{categoryName(c, locale)}</button></li>
+        ))}
+      </ul>
+      <ul class="grid" id="grid">{products.map((p) => <ProductCard product={p} locale={locale} />)}</ul>
+      <p id="empty" hidden>{t('products.empty')}</p>
+    </div>
+  </section>
+</Base>
+<script>
+  // Filtering is an enhancement: without JavaScript every product stays visible.
+  const bar = document.getElementById('filters')!;
+  const cards = [...document.querySelectorAll<HTMLElement>('#grid .pcard')];
+  const empty = document.getElementById('empty')!;
+  const buttons = [...bar.querySelectorAll<HTMLButtonElement>('button')];
+  function apply(id: string) {
+    let shown = 0;
+    cards.forEach((c) => { const on = id === 'all' || c.dataset.category === id; c.hidden = !on; if (on) shown++; });
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === id)));
+    empty.hidden = shown > 0;
+  }
+  bar.hidden = false;
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter!)));
+  const initial = new URLSearchParams(location.search).get('category');
+  if (initial && buttons.some((b) => b.dataset.filter === initial)) apply(initial);
+</script>
