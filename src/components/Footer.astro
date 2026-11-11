@@ -1,0 +1,16 @@
+---
+import { site } from '../config/site';
+import { localePath, useTranslations, type Locale } from '../i18n/config';
+const { locale } = Astro.props as { locale: Locale };
+const t = useTranslations(locale);
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© {new Date().getFullYear()} {site.name}. {t('footer.rights')}</span>
+    <span>
+      <a href={localePath(locale, '/privacy/')}>{t('footer.privacy')}</a>
+      &nbsp;·&nbsp;
+      <button type="button" class="link-btn" data-open-consent>{t('consent.settings')}</button>
+    </span>
+  </div>
+</footer>

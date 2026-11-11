@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-002",
+  "name": "Sample product two",
+  "category": "sample-a",
+  "unitWeight": {
+    "value": 1,
+    "unit": "kg"
+  },
+  "moq": {
+    "value": 10,
+    "unit": "carton"
+  },
+  "image": "sample-002.png",
+  "published": true,
+  "order": 2,
+  "description": "Another optional line. Leave it empty if the name, weight and minimum order say enough."
+}

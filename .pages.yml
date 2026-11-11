@@ -1,0 +1,88 @@
+# Pages CMS configuration (https://pagescms.org).
+# The client signs in with GitHub and edits products through simple forms.
+# Each save becomes a Git commit; Cloudflare then rebuilds and publishes the site.
+# Verify this file on first connection: Pages CMS shows a clear error if a key is wrong.
+
+media:
+  input: src/assets/products
+  output: /assets/products
+  extensions: [png, jpg, jpeg, webp]
+  rename: safe
+
+content:
+  - name: products
+    label: Products
+    type: collection
+    path: src/content/products
+    format: json
+    fields:
+      - name: sku
+        label: Product code (SKU)
+        type: string
+        required: true
+        description: Unique code. Example: ABC-001
+      - name: name
+        label: Product name (as printed on the pack)
+        type: string
+        required: true
+      - name: description
+        label: Short description (optional)
+        type: text
+        required: false
+        description: One or two short sentences, under 300 characters. It is shown exactly as written in every language.
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - { value: sample-a, label: Sample category A }
+            - { value: sample-b, label: Sample category B }
+      - name: unitWeight
+        label: Unit weight
+        type: object
+        fields:
+          - { name: value, label: Amount, type: number, required: true }
+          - name: unit
+            label: Unit
+            type: select
+            required: true
+            options:
+              values:
+                - { value: g, label: g }
+                - { value: kg, label: kg }
+                - { value: ml, label: ml }
+                - { value: l, label: L }
+                - { value: pcs, label: pcs }
+      - name: moq
+        label: Minimum order
+        type: object
+        fields:
+          - { name: value, label: Amount, type: number, required: true }
+          - name: unit
+            label: Unit
+            type: select
+            required: true
+            options:
+              values:
+                - { value: pcs, label: pcs }
+                - { value: carton, label: carton }
+                - { value: pallet, label: pallet }
+                - { value: kg, label: kg }
+      - name: image
+        label: Photo
+        type: image
+        required: true
+        description: PNG or JPG under about 2 MB, plain background, portrait 4:5 (960 x 1200 or larger). Check that the pack does not show the origin country.
+      - name: published
+        label: Show on the website
+        type: boolean
+        default: true
+      - name: featured
+        label: Show in the home page carousel
+        type: boolean
+        default: false
+      - name: order
+        label: Sort order (lower comes first)
+        type: number
+        default: 100

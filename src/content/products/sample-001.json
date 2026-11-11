@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-001",
+  "name": "Sample product one",
+  "category": "sample-a",
+  "unitWeight": {
+    "value": 500,
+    "unit": "g"
+  },
+  "moq": {
+    "value": 20,
+    "unit": "carton"
+  },
+  "image": "sample-001.png",
+  "published": true,
+  "order": 1,
+  "description": "Short example description: what the product is and anything a buyer should know at a glance."
+}

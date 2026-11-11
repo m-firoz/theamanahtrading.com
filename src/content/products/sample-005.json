@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-005",
+  "name": "Sample product five",
+  "category": "sample-b",
+  "unitWeight": {
+    "value": 2,
+    "unit": "kg"
+  },
+  "moq": {
+    "value": 15,
+    "unit": "carton"
+  },
+  "image": "sample-002.png",
+  "published": true,
+  "featured": false,
+  "order": 5
+}

@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-004",
+  "name": "Sample product four",
+  "category": "sample-a",
+  "unitWeight": {
+    "value": 250,
+    "unit": "g"
+  },
+  "moq": {
+    "value": 14,
+    "unit": "carton"
+  },
+  "image": "sample-001.png",
+  "published": true,
+  "featured": false,
+  "order": 4
+}

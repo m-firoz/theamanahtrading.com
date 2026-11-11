@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-008",
+  "name": "Sample product eight",
+  "category": "sample-a",
+  "unitWeight": {
+    "value": 900,
+    "unit": "g"
+  },
+  "moq": {
+    "value": 18,
+    "unit": "carton"
+  },
+  "image": "sample-002.png",
+  "published": true,
+  "featured": false,
+  "order": 8
+}

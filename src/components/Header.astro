@@ -1,0 +1,43 @@
+---
+import { site } from '../config/site';
+import { locales, localeNames, localePath, useTranslations, type Locale } from '../i18n/config';
+import QuoteBadge from './QuoteBadge';
+interface Props { locale: Locale; path: string }
+const { locale, path } = Astro.props;
+const t = useTranslations(locale);
+const links = [
+  { href: localePath(locale, '/products/'), label: t('nav.products'), current: path.startsWith('/products') },
+  { href: localePath(locale, '/') + '#how', label: t('nav.how') },
+  { href: localePath(locale, '/') + '#contact', label: t('nav.contact') },
+];
+const quoteHref = localePath(locale, '/quote/');
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href={localePath(locale, '/')} aria-label={t('nav.home')}>
+      <img src="/favicon.svg" alt="" width="34" height="34" />
+      <span>{site.name}</span>
+    </a>
+    <nav class="nav desktop" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>)}
+      <a class="btn small" href={quoteHref}>{t('nav.quote')}<QuoteBadge client:load /></a>
+    </nav>
+    <details class="lang">
+      <summary aria-label={t('nav.language')}>{localeNames[locale]}</summary>
+      <ul>
+        {locales.map((l) => (
+          <li><a href={localePath(l, path)} lang={l} hreflang={l} aria-current={l === locale ? 'true' : undefined}>{localeNames[l]}</a></li>
+        ))}
+      </ul>
+    </details>
+    <div class="menu-wrap">
+      <details class="menu">
+        <summary>{t('nav.menu')}</summary>
+        <div class="panel">
+          {links.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a class="btn small" href={quoteHref}>{t('nav.quote')}</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

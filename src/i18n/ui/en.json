@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "siteName": "The Amanah Trading",
+    "description": "Wholesale supplier for retailers and traders in Thailand and Southeast Asia. Request a quote online or call us."
+  },
+  "nav": {
+    "products": "Products",
+    "how": "How to order",
+    "contact": "Contact",
+    "quote": "Quote list",
+    "language": "Language",
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "home": "The Amanah Trading, home"
+  },
+  "hero": {
+    "title": "Wholesale products for retailers and traders across Southeast Asia",
+    "text": "Choose what you need, send one request, and we reply directly with price, availability and delivery.",
+    "quote": "Request a quote",
+    "call": "Call us",
+    "facts": [
+      {
+        "title": "7 markets",
+        "text": "Thailand and six neighbouring countries"
+      },
+      {
+        "title": "Clear terms",
+        "text": "Unit weight and minimum order on every product"
+      },
+      {
+        "title": "Direct contact",
+        "text": "No checkout: we reply by phone or email"
+      }
+    ]
+  },
+  "how": {
+    "title": "How ordering works",
+    "steps": [
+      {
+        "title": "Choose products",
+        "text": "Browse the range and add what you need to your quote list."
+      },
+      {
+        "title": "Send your request",
+        "text": "Tell us who you are and send the list. It reaches us by email."
+      },
+      {
+        "title": "We reply directly",
+        "text": "We confirm price, availability and delivery with you by phone or email."
+      }
+    ]
+  },
+  "categories": {
+    "title": "Product categories",
+    "all": "All products"
+  },
+  "products": {
+    "title": "Products",
+    "featured": "Featured products",
+    "weight": "Unit weight",
+    "moq": "Minimum order",
+    "price": "Contact for pricing",
+    "add": "Add to quote",
+    "inQuote": "In your quote list",
+    "viewQuote": "View quote list",
+    "empty": "No products in this category yet.",
+    "sku": "Product code",
+    "intro": "Add what you need to your quote list. We reply with price and availability."
+  },
+  "units": {
+    "g": "g",
+    "kg": "kg",
+    "ml": "ml",
+    "l": "L",
+    "pcs": "pcs",
+    "carton": "carton",
+    "pallet": "pallet"
+  },
+  "quote": {
+    "title": "Your quote list",
+    "intro": "Set the quantities you need, then send your request. We reply with price and availability.",
+    "empty": "Your quote list is empty. Browse the products and add what you need.",
+    "browse": "Browse products",
+    "item": "Product",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "details": "Your details",
+    "name": "Your name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "country": "Country",
+    "message": "Message (optional)",
+    "consent": "I agree that The Amanah Trading may use these details to reply to my request.",
+    "consentLink": "Read the privacy notice",
+    "submit": "Send quote request",
+    "sending": "Sending…",
+    "qtyError": "Quantity for {name} must be at least the minimum order ({moq} {unit}).",
+    "tooFast": "Please check your details and press send again.",
+    "failed": "We could not send your request. Please call or email us, and copy your list below.",
+    "needKey": "The form is not connected yet. Please call or email us instead.",
+    "callOrEmail": "Prefer to talk? Call {phone} or email {email}.",
+    "sentTitle": "Quote request sent",
+    "testMode": "Test mode: nothing was sent.",
+    "reference": "Reference number",
+    "sentAt": "Sent",
+    "yourDetails": "Your details",
+    "requested": "Requested items",
+    "statement": "This is a request for a quote. It is not an order, and it does not confirm price or availability.",
+    "keepRecord": "We do not email you a copy. Save this page as a PDF, print it, or take a screenshot to keep a record.",
+    "print": "Save as PDF or print",
+    "copy": "Copy list",
+    "copied": "Copied",
+    "newQuote": "Start a new quote",
+    "contactUs": "Contact us",
+    "hours": "Hours"
+  },
+  "contact": {
+    "title": "Talk to us",
+    "text": "Call or email us for prices, availability and delivery.",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Hours"
+  },
+  "consent": {
+    "title": "Your privacy choices",
+    "text": "Nothing optional is switched on until you choose. You can change your choice at any time from Privacy settings in the footer.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "choose": "Choose",
+    "save": "Save choices",
+    "necessary": "Necessary",
+    "necessaryText": "Remembers your privacy choice and your quote list while you browse. Always on.",
+    "analytics": "Analytics",
+    "analyticsText": "Counts visits so we can improve the site. Off unless you agree.",
+    "settings": "Privacy settings"
+  },
+  "privacy": {
+    "title": "Privacy notice",
+    "draft": "Draft structure for review by a Thai adviser. Replace each bracket before launch.",
+    "sections": [
+      {
+        "title": "Who we are",
+        "text": "[Registered company name, address and contact details of The Amanah Trading.]"
+      },
+      {
+        "title": "What we collect",
+        "text": "Only what you enter in the quote form: name, company, email, phone number (optional), country, message and the items you list. Optional analytics only if you agree."
+      },
+      {
+        "title": "Why we use it",
+        "text": "To reply to your quote request. [Lawful basis to be confirmed.]"
+      },
+      {
+        "title": "Who receives it",
+        "text": "The form service Web3Forms and its processors, our hosting provider Cloudflare, and our email provider Purelymail. [Confirm the full list and whether data leaves Thailand.]"
+      },
+      {
+        "title": "How long we keep it",
+        "text": "[Retention period to be set.]"
+      },
+      {
+        "title": "Your rights",
+        "text": "You may ask to see, correct or delete your data and withdraw your consent at any time by contacting us. You may also complain to the data protection authority. [Confirm wording.]"
+      }
+    ]
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy notice"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page does not exist. Try the product list or the home page.",
+    "home": "Back to home"
+  },
+  "selection": {
+    "title": "A selection from our range",
+    "text": "A glimpse of what we supply. The full range is on the products page.",
+    "all": "See all products",
+    "prev": "Previous products",
+    "next": "Next products",
+    "label": "Selected products"
+  }
+}

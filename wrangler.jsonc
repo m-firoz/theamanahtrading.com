@@ -1,0 +1,10 @@
+{
+  // Static site served by Cloudflare Workers static assets.
+  // Run `npm run build` first; Wrangler uploads ./dist.
+  "name": "amanah-trading-site",
+  "compatibility_date": "2026-11-08",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

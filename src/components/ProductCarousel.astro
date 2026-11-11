@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import type { Product } from '../lib/products';
+import { localePath, useTranslations, type Locale } from '../i18n/config';
+interface Props { products: Product[]; locale: Locale }
+const { products, locale } = Astro.props;
+const t = useTranslations(locale);
+const listHref = localePath(locale, '/products/');
+---
+<div class="carousel" data-carousel>
+  <div class="carousel-head">
+    <div>
+      <h2>{t('selection.title')}</h2>
+      <p class="muted" style="margin:0">{t('selection.text')}</p>
+    </div>
+    <div class="carousel-controls" data-controls hidden>
+      <button type="button" class="round" data-prev aria-label={t('selection.prev')}>&#8592;</button>
+      <button type="button" class="round" data-next aria-label={t('selection.next')}>&#8594;</button>
+    </div>
+  </div>
+  <ul class="carousel-track" data-track tabindex="0" role="group" aria-label={t('selection.label')}>
+    {products.map((p) => (
+      <li class="cslide">
+        <a href={`${listHref}#${p.slug}`}>
+          <span class="pic"><Image src={p.image} alt="" widths={[200, 400]} sizes="220px" format="webp" loading="lazy" /></span>
+          <strong>{p.name}</strong>
+          <small>{p.unitWeight.value} {t(`units.${p.unitWeight.unit}`)} · {t('products.moq')} {p.moq.value} {t(`units.${p.moq.unit}`)}</small>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p style="margin-top:1rem"><a class="btn" href={listHref}>{t('selection.all')}</a></p>
+</div>
+<script>
+  // Enhancement only: the track already scrolls and swipes without JavaScript.
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]')!;
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    const controls = root.querySelector<HTMLElement>('[data-controls]')!;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior: ScrollBehavior = reduce ? 'auto' : 'smooth';
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      controls.hidden = track.scrollWidth <= track.clientWidth + 4;
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -track.clientWidth * 0.85, behavior }));
+    next.addEventListener('click', () => track.scrollBy({ left: track.clientWidth * 0.85, behavior }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import type { Product } from '../lib/products';
+import { localePath, useTranslations, type Locale } from '../i18n/config';
+import AddToQuote from './AddToQuote';
+interface Props { product: Product; locale: Locale }
+const { product: p, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<li class="pcard" id={p.slug} data-category={p.category}>
+  <div class="pic">
+    <Image src={p.image} alt={p.name} widths={[240, 480]} sizes="(min-width: 700px) 240px, 45vw" format="webp" />
+  </div>
+  <h3>{p.name}</h3>
+  {p.description && <p class="desc">{p.description}</p>}
+  <dl class="facts">
+    <div><dt>{t('products.weight')}</dt><dd>{p.unitWeight.value} {t(`units.${p.unitWeight.unit}`)}</dd></div>
+    <div><dt>{t('products.moq')}</dt><dd>{p.moq.value} {t(`units.${p.moq.unit}`)}</dd></div>
+  </dl>
+  <div class="actions">
+    <span><span class="tag">{t('products.price')}</span></span>
+    <AddToQuote client:visible sku={p.sku} moq={p.moq.value} add={t('products.add')} inQuote={t('products.inQuote')} href={localePath(locale, '/quote/')} />
+  </div>
+</li>

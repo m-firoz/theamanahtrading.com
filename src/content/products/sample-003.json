@@ -1,0 +1,3 @@
+{ "sku": "SAMPLE-003", "name": "Sample product three", "category": "sample-b",
+  "unitWeight": { "value": 750, "unit": "ml" }, "moq": { "value": 30, "unit": "carton" },
+  "image": "sample-003.png", "published": true, "order": 3 }

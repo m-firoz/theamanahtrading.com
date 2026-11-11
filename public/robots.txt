@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theamanahtrading.com/sitemap-index.xml

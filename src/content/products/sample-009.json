@@ -1,0 +1,17 @@
+{
+  "sku": "SAMPLE-009",
+  "name": "Sample product nine",
+  "category": "sample-b",
+  "unitWeight": {
+    "value": 12,
+    "unit": "pcs"
+  },
+  "moq": {
+    "value": 19,
+    "unit": "carton"
+  },
+  "image": "sample-003.png",
+  "published": true,
+  "featured": false,
+  "order": 9
+}

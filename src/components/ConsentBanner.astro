@@ -1,0 +1,62 @@
+---
+import { localePath, useTranslations, type Locale } from '../i18n/config';
+const { locale } = Astro.props as { locale: Locale };
+const t = useTranslations(locale);
+---
+<section class="consent" id="consent" role="region" aria-labelledby="consent-title" hidden>
+  <div class="wrap">
+    <div>
+      <strong id="consent-title">{t('consent.title')}</strong>
+      <p class="muted" style="margin:0.25rem 0 0">{t('consent.text')} <a href={localePath(locale, '/privacy/')}>{t('footer.privacy')}</a></p>
+    </div>
+    <div class="consent-panel" id="consent-panel" hidden>
+      <label class="check"><input type="checkbox" checked disabled /> <span><strong>{t('consent.necessary')}</strong>: {t('consent.necessaryText')}</span></label>
+      <label class="check"><input type="checkbox" id="consent-analytics" /> <span><strong>{t('consent.analytics')}</strong>: {t('consent.analyticsText')}</span></label>
+      <div class="consent-actions"><button class="btn" type="button" id="consent-save">{t('consent.save')}</button></div>
+    </div>
+    <div class="consent-actions" id="consent-main">
+      <button class="btn" type="button" id="consent-accept">{t('consent.acceptAll')}</button>
+      <button class="btn" type="button" id="consent-reject">{t('consent.rejectAll')}</button>
+      <button class="btn ghost" type="button" id="consent-choose">{t('consent.choose')}</button>
+    </div>
+  </div>
+</section>
+<script>
+  // Opt-in consent. No pre-ticked boxes. Accept and Reject are equally prominent.
+  // The choice is kept in this browser only and expires after 12 months.
+  const KEY = 'amanah-consent';
+  const YEAR = 365 * 24 * 3600 * 1000;
+  const el = (id: string) => document.getElementById(id)!;
+  const banner = el('consent');
+  const panel = el('consent-panel');
+  const main = el('consent-main');
+  const analytics = el('consent-analytics') as HTMLInputElement;
+
+  function read() {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY) ?? 'null');
+      return v && Date.now() - v.ts < YEAR ? v : null;
+    } catch { return null; }
+  }
+  function save(a: boolean) {
+    const rec = { v: 1, ts: Date.now(), analytics: a };
+    localStorage.setItem(KEY, JSON.stringify(rec));
+    banner.hidden = true;
+    window.dispatchEvent(new CustomEvent('consent:changed', { detail: rec }));
+  }
+  function open() {
+    const cur = read();
+    analytics.checked = !!cur?.analytics; // starts unticked
+    panel.hidden = true; main.hidden = false;
+    banner.hidden = false;
+    (el('consent-accept') as HTMLElement).focus();
+  }
+  (window as any).amanahConsent = { get: read };
+  if (!read()) banner.hidden = false;
+
+  el('consent-accept').addEventListener('click', () => save(true));
+  el('consent-reject').addEventListener('click', () => save(false));
+  el('consent-choose').addEventListener('click', () => { panel.hidden = false; main.hidden = true; analytics.focus(); });
+  el('consent-save').addEventListener('click', () => save(analytics.checked));
+  document.querySelectorAll('[data-open-consent]').forEach((b) => b.addEventListener('click', open));
+</script>
