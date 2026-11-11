@@ -1,0 +1,21 @@
+/* Brand tokens. Change colours here and everywhere updates.
+   Palette: Sky Blue (primary), Background, Accent (deep navy).
+   Contrast ratios are noted next to each pairing (WCAG: 4.5 for body text, 3 for large text and UI). */
+:root {
+  --bg: #F5F7F9;          /* page background */
+  --card: #FFFFFF;        /* cards and form surfaces */
+  --wash: #E8EEF3;       /* soft alternate section background */
+  --line: #D5DEE6;       /* borders and dividers */
+  --primary: #00A6FB;     /* Sky Blue: panels, accents, badges. Navy text on it 5.1:1 (passes); white text on it 2.7:1 (fails, never use) */
+  --primary-tint: #D9F2FE; /* tags and highlights. Navy on it 11.8:1 */
+  --accent: #172F46;      /* Accent navy: text, headings, buttons, dark surfaces. 12.8:1 on bg, white on it 13.7:1 */
+  --accent-hover: #24435F;
+  --muted: #4D6073;       /* secondary text. 6.0:1 on bg */
+
+  --font-body: 'Inter Variable', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans Lao', system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans Lao', Georgia, serif;
+
+  --radius: 12px;
+  --space: clamp(1rem, 2.5vw, 1.5rem);
+  --wrap: 1120px;
+}
