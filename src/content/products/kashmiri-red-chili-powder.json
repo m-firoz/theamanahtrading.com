@@ -1,0 +1,15 @@
+{
+  "sku": "GSP-002",
+  "name": "Kashmiri Red Chili Powder",
+  "category": "ground-spices-powders",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "kashmiri-red-chili-powder-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 20
+}

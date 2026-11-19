@@ -1,0 +1,15 @@
+{
+  "sku": "WSP-008",
+  "name": "Cumin Seeds - Whole",
+  "category": "whole-spices",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "cumin-seeds-whole-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 16
+}

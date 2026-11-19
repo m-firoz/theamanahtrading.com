@@ -1,0 +1,18 @@
+{
+  "sku": "SNK-001",
+  "name": "Pani Puri Papad",
+  "category": "snack-items",
+  "moq": {
+    "value": 11,
+    "unit": "ton"
+  },
+  "images": [
+    "pani-puri-papad-1.jpeg",
+    "pani-puri-papad-2.jpeg",
+    "pani-puri-papad-3.jpeg",
+    "pani-puri-papad-4.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 37
+}

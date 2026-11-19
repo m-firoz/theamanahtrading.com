@@ -1,0 +1,16 @@
+{
+  "sku": "GSP-001",
+  "name": "Coriander Powder",
+  "category": "ground-spices-powders",
+  "unitWeight": "100 g",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "coriander-powder-1.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 19
+}

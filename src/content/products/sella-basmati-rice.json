@@ -1,0 +1,16 @@
+{
+  "sku": "RIC-007",
+  "name": "Sella Basmati Rice",
+  "category": "rice",
+  "unitWeight": "1 kg / 2 kg / 4 kg / 5 kg / 30 kg",
+  "moq": {
+    "value": 24,
+    "unit": "ton"
+  },
+  "images": [
+    "sella-basmati-rice-1.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 7
+}

@@ -1,0 +1,15 @@
+{
+  "sku": "WSP-004",
+  "name": "Cinnamon",
+  "category": "whole-spices",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "cinnamon-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 12
+}

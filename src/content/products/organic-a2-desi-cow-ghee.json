@@ -1,0 +1,15 @@
+{
+  "sku": "DRY-002",
+  "name": "Organic A2 Desi Cow Ghee",
+  "category": "dairy",
+  "moq": {
+    "value": 2,
+    "unit": "ton"
+  },
+  "images": [
+    "organic-a2-desi-cow-ghee-1.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 35
+}

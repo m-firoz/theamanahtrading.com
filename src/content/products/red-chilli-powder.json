@@ -1,0 +1,18 @@
+{
+  "sku": "GSP-003",
+  "name": "Red Chilli Powder",
+  "category": "ground-spices-powders",
+  "unitWeight": "100 g",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "red-chilli-powder-1.png",
+    "red-chilli-powder-2.png",
+    "red-chilli-powder-3.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 21
+}

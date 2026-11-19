@@ -1,0 +1,15 @@
+{
+  "sku": "COL-001",
+  "name": "Masala Selection",
+  "category": "product-collections",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "masala-selection-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 38
+}

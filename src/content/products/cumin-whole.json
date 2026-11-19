@@ -1,0 +1,16 @@
+{
+  "sku": "WSP-007",
+  "name": "Cumin - Whole",
+  "category": "whole-spices",
+  "unitWeight": "100 g",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "cumin-whole-1.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 15
+}

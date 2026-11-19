@@ -1,0 +1,15 @@
+{
+  "sku": "DRY-001",
+  "name": "Cow Ghee",
+  "category": "dairy",
+  "moq": {
+    "value": 2,
+    "unit": "ton"
+  },
+  "images": [
+    "cow-ghee-1.png"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 34
+}

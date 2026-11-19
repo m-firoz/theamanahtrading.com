@@ -1,0 +1,18 @@
+{
+  "sku": "GSP-004",
+  "name": "Turmeric Powder",
+  "category": "ground-spices-powders",
+  "unitWeight": "100 g",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "turmeric-powder-1.png",
+    "turmeric-powder-2.png",
+    "turmeric-powder-3.png"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 22
+}

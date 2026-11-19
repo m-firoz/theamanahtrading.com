@@ -1,0 +1,15 @@
+{
+  "sku": "PLS-003",
+  "name": "Kabuli Chickpeas - 9mm",
+  "category": "pulses-legumes",
+  "moq": {
+    "value": 23,
+    "unit": "ton"
+  },
+  "images": [
+    "kabuli-chickpeas-9mm-1.jpg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 33
+}

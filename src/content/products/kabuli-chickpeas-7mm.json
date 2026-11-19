@@ -1,0 +1,15 @@
+{
+  "sku": "PLS-001",
+  "name": "Kabuli Chickpeas - 7mm",
+  "category": "pulses-legumes",
+  "moq": {
+    "value": 23,
+    "unit": "ton"
+  },
+  "images": [
+    "kabuli-chickpeas-7mm-1.jpg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 31
+}

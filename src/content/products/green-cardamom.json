@@ -1,0 +1,15 @@
+{
+  "sku": "WSP-009",
+  "name": "Green Cardamom",
+  "category": "whole-spices",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "green-cardamom-1.jpeg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 17
+}

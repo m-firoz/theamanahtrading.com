@@ -1,0 +1,16 @@
+{
+  "sku": "DHV-001",
+  "name": "Crushed Red Pepper Flakes",
+  "category": "dried-herbs-vegetables",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "crushed-red-pepper-flakes-1.jpeg",
+    "crushed-red-pepper-flakes-2.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 25
+}

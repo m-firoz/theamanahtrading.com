@@ -24,7 +24,7 @@ const listHref = localePath(locale, '/products/');
         <a href={`${listHref}#${p.slug}`}>
           <span class="pic"><Image src={p.image} alt="" widths={[200, 400]} sizes="220px" format="webp" loading="lazy" /></span>
           <strong>{p.name}</strong>
-          <small>{p.unitWeight.value} {t(`units.${p.unitWeight.unit}`)} · {t('products.moq')} {p.moq.value} {t(`units.${p.moq.unit}`)}</small>
+          <small>{p.unitWeight ? `${p.unitWeight} · ` : ''}{t('products.moq')} {p.moq.value} {t(`units.${p.moq.unit}`)}</small>
         </a>
       </li>
     ))}

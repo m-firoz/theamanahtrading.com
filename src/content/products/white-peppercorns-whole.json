@@ -1,0 +1,15 @@
+{
+  "sku": "WSP-010",
+  "name": "White Peppercorns - Whole",
+  "category": "whole-spices",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "white-peppercorns-whole-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 18
+}

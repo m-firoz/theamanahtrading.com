@@ -12,7 +12,7 @@ const ui = getUi(locale);
 const products = await getProducts();
 const catalog = products.map((p) => ({
   sku: p.sku, name: p.name,
-  weight: `${p.unitWeight.value} ${t(`units.${p.unitWeight.unit}`)}`,
+  weight: p.unitWeight ?? '',
   moqValue: p.moq.value, moqUnit: p.moq.unit,
 }));
 const { name, email, phoneDisplay, phoneTel, hours, timeZone, timeZoneLabel, formKey, countries } = site;

@@ -1,0 +1,15 @@
+{
+  "sku": "DRY-003",
+  "name": "Organic Desi Cow Ghee",
+  "category": "dairy",
+  "moq": {
+    "value": 2,
+    "unit": "ton"
+  },
+  "images": [
+    "organic-desi-cow-ghee-1.png"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 36
+}

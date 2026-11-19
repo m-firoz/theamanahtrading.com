@@ -1,0 +1,15 @@
+{
+  "sku": "WSP-005",
+  "name": "Cloves - Whole",
+  "category": "whole-spices",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "cloves-whole-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 13
+}

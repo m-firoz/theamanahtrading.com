@@ -1,0 +1,15 @@
+{
+  "sku": "DHV-003",
+  "name": "Dried Parsley Leaves - Premium Grade",
+  "category": "dried-herbs-vegetables",
+  "moq": {
+    "value": 2,
+    "unit": "ton"
+  },
+  "images": [
+    "dried-parsley-leaves-premium-grade-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 27
+}

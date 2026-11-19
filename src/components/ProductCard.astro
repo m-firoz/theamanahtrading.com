@@ -6,15 +6,27 @@ import AddToQuote from './AddToQuote';
 interface Props { product: Product; locale: Locale }
 const { product: p, locale } = Astro.props;
 const t = useTranslations(locale);
+const many = p.images.length > 1;
 ---
 <li class="pcard" id={p.slug} data-category={p.category}>
   <div class="pic">
-    <Image src={p.image} alt={p.name} widths={[240, 480]} sizes="(min-width: 700px) 240px, 45vw" format="webp" />
+    {p.images.map((img, i) => (
+      <Image src={img} alt={i === 0 ? p.name : `${p.name} (${i + 1})`} widths={[240, 480]} sizes="(min-width: 700px) 240px, 45vw" format="webp" loading="lazy" data-photo={i} hidden={i !== 0} />
+    ))}
   </div>
+  {many && (
+    <div class="thumbs" role="group" aria-label={p.name}>
+      {p.images.map((img, i) => (
+        <button type="button" data-thumb={i} aria-pressed={i === 0 ? 'true' : 'false'} aria-label={`${t('products.photo')} ${i + 1}`}>
+          <Image src={img} alt="" widths={[64, 128]} sizes="44px" format="webp" loading="lazy" />
+        </button>
+      ))}
+    </div>
+  )}
   <h3>{p.name}</h3>
   {p.description && <p class="desc">{p.description}</p>}
   <dl class="facts">
-    <div><dt>{t('products.weight')}</dt><dd>{p.unitWeight.value} {t(`units.${p.unitWeight.unit}`)}</dd></div>
+    {p.unitWeight && <div><dt>{t('products.weight')}</dt><dd>{p.unitWeight}</dd></div>}
     <div><dt>{t('products.moq')}</dt><dd>{p.moq.value} {t(`units.${p.moq.unit}`)}</dd></div>
   </dl>
   <div class="actions">
@@ -22,3 +34,14 @@ const t = useTranslations(locale);
     <AddToQuote client:visible sku={p.sku} moq={p.moq.value} add={t('products.add')} inQuote={t('products.inQuote')} href={localePath(locale, '/quote/')} />
   </div>
 </li>
+<script>
+  // Thumbnails switch the large photo. Without JavaScript the first photo simply stays.
+  document.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-thumb]');
+    if (!b) return;
+    const card = b.closest('.pcard')!;
+    const i = b.dataset.thumb;
+    card.querySelectorAll<HTMLElement>('[data-photo]').forEach((img) => { img.hidden = img.dataset.photo !== i; });
+    card.querySelectorAll<HTMLElement>('[data-thumb]').forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.thumb === i)));
+  });
+</script>

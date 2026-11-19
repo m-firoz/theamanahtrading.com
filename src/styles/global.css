@@ -177,3 +177,9 @@ label.field.check, .check { display: flex; gap: 0.7rem; align-items: flex-start;
 .cslide .pic img { width: 100%; height: 100%; object-fit: contain; }
 .cslide strong { font-size: 1rem; line-height: 1.3; }
 .cslide small { color: var(--muted); }
+
+/* Product photo thumbnails */
+.thumbs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.thumbs button { width: 44px; height: 44px; padding: 2px; border: 2px solid var(--line); border-radius: 8px; background: var(--primary-tint); cursor: pointer; }
+.thumbs button[aria-pressed='true'] { border-color: var(--accent); }
+.thumbs img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }

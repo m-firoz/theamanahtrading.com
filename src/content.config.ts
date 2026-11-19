@@ -10,15 +10,12 @@ const products = defineCollection({
     name: z.string().min(1), // as printed on the pack; not translated
     description: z.string().max(300).optional(), // optional short line, shown as written in every language
     category: z.string().min(1), // id of a file in src/content/categories
-    unitWeight: z.object({
-      value: z.number().positive(),
-      unit: z.enum(['g', 'kg', 'ml', 'l', 'pcs']),
-    }),
+    unitWeight: z.string().optional(), // pack sizes shown as written, e.g. "100 g" or "1 kg / 2 kg / 5 kg"
     moq: z.object({
-      value: z.number().int().positive(),
-      unit: z.enum(['pcs', 'carton', 'pallet', 'kg']),
+      value: z.number().positive(),
+      unit: z.enum(['pcs', 'carton', 'pallet', 'kg', 'ton']),
     }),
-    image: z.string().min(1), // file name in src/assets/products
+    images: z.array(z.string().min(1)).min(1), // file names in src/assets/products; the first is the main photo
     published: z.boolean().default(true),
     featured: z.boolean().default(false), // shown in the home page carousel
     order: z.number().default(100),

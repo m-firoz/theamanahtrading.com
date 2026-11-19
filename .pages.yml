@@ -20,7 +20,7 @@ content:
         label: Product code (SKU)
         type: string
         required: true
-        description: Unique code. Example: ABC-001
+        description: Unique code. Example: RIC-001
       - name: name
         label: Product name (as printed on the pack)
         type: string
@@ -36,26 +36,22 @@ content:
         required: true
         options:
           values:
-            - { value: sample-a, label: Sample category A }
-            - { value: sample-b, label: Sample category B }
+            - { value: rice, label: "Rice" }
+            - { value: whole-spices, label: "Whole spices" }
+            - { value: ground-spices-powders, label: "Ground spices & powders" }
+            - { value: spice-blends-seasonings, label: "Spice blends & seasonings" }
+            - { value: dried-herbs-vegetables, label: "Dried herbs & vegetables" }
+            - { value: pulses-legumes, label: "Pulses & legumes" }
+            - { value: dairy, label: "Dairy" }
+            - { value: snack-items, label: "Snack items" }
+            - { value: product-collections, label: "Product collections" }
       - name: unitWeight
-        label: Unit weight
-        type: object
-        fields:
-          - { name: value, label: Amount, type: number, required: true }
-          - name: unit
-            label: Unit
-            type: select
-            required: true
-            options:
-              values:
-                - { value: g, label: g }
-                - { value: kg, label: kg }
-                - { value: ml, label: ml }
-                - { value: l, label: L }
-                - { value: pcs, label: pcs }
+        label: Unit weight or pack sizes (optional)
+        type: string
+        required: false
+        description: Write it as it should appear. Examples: 100 g, or 1 kg / 2 kg / 5 kg
       - name: moq
-        label: Minimum order
+        label: Minimum order (MOQ)
         type: object
         fields:
           - { name: value, label: Amount, type: number, required: true }
@@ -63,17 +59,20 @@ content:
             label: Unit
             type: select
             required: true
+            default: ton
             options:
               values:
-                - { value: pcs, label: pcs }
+                - { value: ton, label: metric ton }
+                - { value: kg, label: kg }
                 - { value: carton, label: carton }
                 - { value: pallet, label: pallet }
-                - { value: kg, label: kg }
-      - name: image
-        label: Photo
+                - { value: pcs, label: pcs }
+      - name: images
+        label: Photos
         type: image
+        list: true
         required: true
-        description: PNG or JPG under about 2 MB, plain background, portrait 4:5 (960 x 1200 or larger). Check that the pack does not show the origin country.
+        description: The first photo is the main one. PNG or JPG under about 2 MB, plain background. Check that the pack does not show the origin country.
       - name: published
         label: Show on the website
         type: boolean

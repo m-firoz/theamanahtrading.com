@@ -65,7 +65,8 @@
     "viewQuote": "View quote list",
     "empty": "No products in this category yet.",
     "sku": "Product code",
-    "intro": "Add what you need to your quote list. We reply with price and availability."
+    "intro": "Add what you need to your quote list. We reply with price and availability.",
+    "photo": "Photo"
   },
   "units": {
     "g": "g",
@@ -74,7 +75,8 @@
     "l": "L",
     "pcs": "pcs",
     "carton": "carton",
-    "pallet": "pallet"
+    "pallet": "pallet",
+    "ton": "metric ton"
   },
   "quote": {
     "title": "Your quote list",

@@ -21,9 +21,10 @@ export type Product = {
   name: string;
   description?: string;
   category: string;
-  unitWeight: { value: number; unit: string };
+  unitWeight?: string;
   moq: { value: number; unit: string };
-  image: ImageMetadata;
+  image: ImageMetadata; // main photo
+  images: ImageMetadata[];
   featured: boolean;
   order: number;
 };
@@ -49,15 +50,16 @@ export async function getProducts(): Promise<Product[]> {
     if (!catIds.has(d.category)) {
       throw new Error(`Product ${d.sku}: unknown category "${d.category}". Known: ${[...catIds].join(', ')}`);
     }
-    const image = findImage(d.image);
-    if (!image) {
-      throw new Error(`Product ${d.sku}: image "${d.image}" not found in src/assets/products`);
-    }
+    const images = d.images.map((file) => {
+      const found = findImage(file);
+      if (!found) throw new Error(`Product ${d.sku}: image "${file}" not found in src/assets/products`);
+      return found;
+    });
     if (seen.has(d.sku.toLowerCase())) throw new Error(`Duplicate SKU: ${d.sku}`);
     seen.add(d.sku.toLowerCase());
     out.push({
       slug: e.id, sku: d.sku, name: d.name, description: d.description, category: d.category,
-      unitWeight: d.unitWeight, moq: d.moq, image, featured: d.featured, order: d.order,
+      unitWeight: d.unitWeight, moq: d.moq, image: images[0], images, featured: d.featured, order: d.order,
     });
   }
   return out.sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));

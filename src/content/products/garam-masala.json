@@ -1,0 +1,16 @@
+{
+  "sku": "BLD-002",
+  "name": "Garam Masala",
+  "category": "spice-blends-seasonings",
+  "unitWeight": "100 g",
+  "moq": {
+    "value": 1,
+    "unit": "ton"
+  },
+  "images": [
+    "garam-masala-1.png"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 24
+}

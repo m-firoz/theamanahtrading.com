@@ -1,0 +1,15 @@
+{
+  "sku": "DHV-004",
+  "name": "Garlic Flakes - A Grade",
+  "category": "dried-herbs-vegetables",
+  "moq": {
+    "value": 11,
+    "unit": "ton"
+  },
+  "images": [
+    "garlic-flakes-a-grade-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 28
+}

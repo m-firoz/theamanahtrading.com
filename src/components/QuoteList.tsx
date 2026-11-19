@@ -68,7 +68,7 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
   const set = (k: string, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
 
   function buildText(ref: string, iso: string, buyer: Buyer, lines: Line[]) {
-    const rows = lines.map((l, i) => `${i + 1}. ${l.sku} | ${l.name} | ${l.weight} | quantity ${l.qty} ${l.unit}`);
+    const rows = lines.map((l, i) => `${i + 1}. ${[l.sku, l.name, l.weight, `quantity ${l.qty} ${l.unit}`].filter(Boolean).join(' | ')}`);
     return [
       `Quote request ${ref}`,
       `Sent: ${formatDate(iso, 'en', site.timeZone)} (${site.timeZoneLabel})`,
@@ -175,7 +175,7 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
             <thead><tr><th>SKU</th><th>{L.item}</th><th>{L.quantity}</th></tr></thead>
             <tbody>
               {conf.lines.map((l) => (
-                <tr key={l.sku}><td>{l.sku}</td><td>{l.name} <span className="muted">({l.weight})</span></td><td>{l.qty} {l.unit}</td></tr>
+                <tr key={l.sku}><td>{l.sku}</td><td>{l.name}{l.weight && <span className="muted"> ({l.weight})</span>}</td><td>{l.qty} {l.unit}</td></tr>
               ))}
             </tbody>
           </table>
@@ -213,7 +213,7 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
               const unit = units[c.moqUnit] ?? c.moqUnit;
               return (
                 <tr key={i.sku}>
-                  <td><strong>{c.name}</strong><br /><span className="muted">{c.sku} · {c.weight}</span></td>
+                  <td><strong>{c.name}</strong><br /><span className="muted">{c.sku}{c.weight ? ` · ${c.weight}` : ''}</span></td>
                   <td>
                     <label className="sr-only" htmlFor={`q-${i.sku}`}>{L.quantity}: {c.name}</label>
                     <input id={`q-${i.sku}`} className="qty" type="number" inputMode="numeric" step={1}

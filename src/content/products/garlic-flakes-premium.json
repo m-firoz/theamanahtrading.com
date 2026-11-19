@@ -1,0 +1,15 @@
+{
+  "sku": "DHV-006",
+  "name": "Garlic Flakes - Premium",
+  "category": "dried-herbs-vegetables",
+  "moq": {
+    "value": 11,
+    "unit": "ton"
+  },
+  "images": [
+    "garlic-flakes-premium-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 30
+}
