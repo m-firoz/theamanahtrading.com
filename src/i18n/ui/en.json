@@ -11,17 +11,23 @@
     "language": "Language",
     "menu": "Menu",
     "skip": "Skip to content",
-    "home": "The Amanah Trading, home"
+    "home": "The Amanah Trading, home",
+    "about": "About",
+    "quoteShort": "Quote"
   },
   "hero": {
     "title": "Wholesale products for retailers and traders across Southeast Asia",
     "text": "Choose what you need, send one request, and we reply directly with price, availability and delivery.",
-    "quote": "Request a quote",
+    "quote": "Start your quote",
     "call": "Call us",
     "facts": [
       {
         "title": "7 markets",
         "text": "Thailand and six neighbouring countries"
+      },
+      {
+        "title": "20+ years",
+        "text": "Led by a team with decades in the trade"
       },
       {
         "title": "Clear terms",
@@ -32,6 +38,19 @@
         "text": "No checkout: we reply by phone or email"
       }
     ]
+  },
+  "supply": {
+    "title": "What we supply",
+    "range": "Full range",
+    "count": "{n} products",
+    "all": "All {n} products"
+  },
+  "groups": {
+    "rice": "Rice",
+    "spices": "Spices",
+    "herbs-vegetables": "Herbs & vegetables",
+    "pulses-snacks": "Pulses & snacks",
+    "dairy": "Dairy"
   },
   "how": {
     "title": "How ordering works",
@@ -56,8 +75,7 @@
   },
   "products": {
     "title": "Products",
-    "featured": "Featured products",
-    "weight": "Unit weight",
+    "weight": "Pack sizes",
     "moq": "Minimum order",
     "price": "Contact for pricing",
     "add": "Add to quote",
@@ -66,7 +84,12 @@
     "empty": "No products in this category yet.",
     "sku": "Product code",
     "intro": "Add what you need to your quote list. We reply with price and availability.",
-    "photo": "Photo"
+    "photo": "Photo",
+    "inQuoteShort": "In quote",
+    "seeAll": "See all {n}",
+    "prev": "Previous products",
+    "next": "Next products",
+    "rail": "{name} products"
   },
   "units": {
     "g": "g",
@@ -76,7 +99,10 @@
     "pcs": "pcs",
     "carton": "carton",
     "pallet": "pallet",
-    "ton": "metric ton"
+    "ton": "metric ton",
+    "ton_other": "metric tons",
+    "carton_other": "cartons",
+    "pallet_other": "pallets"
   },
   "quote": {
     "title": "Your quote list",
@@ -122,7 +148,8 @@
     "text": "Call or email us for prices, availability and delivery.",
     "phone": "Phone",
     "email": "Email",
-    "hours": "Hours"
+    "hours": "Hours",
+    "emailUs": "Email us"
   },
   "consent": {
     "title": "Your privacy choices",
@@ -169,19 +196,48 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "privacy": "Privacy notice"
+    "privacy": "Privacy notice",
+    "explore": "Explore",
+    "legal": "Legal",
+    "contact": "Contact"
   },
   "notFound": {
     "title": "Page not found",
     "text": "This page does not exist. Try the product list or the home page.",
     "home": "Back to home"
   },
-  "selection": {
-    "title": "A selection from our range",
-    "text": "A glimpse of what we supply. The full range is on the products page.",
-    "all": "See all products",
-    "prev": "Previous products",
-    "next": "Next products",
-    "label": "Selected products"
+  "about": {
+    "title": "About us",
+    "facts": [
+      {
+        "title": "Since 2004",
+        "text": "Trading food commodities across the region"
+      },
+      {
+        "title": "Bangkok, Thailand",
+        "text": "Our home base"
+      },
+      {
+        "title": "Direct sourcing",
+        "text": "Rice, wheat flour, pulses and other food products"
+      }
+    ],
+    "intro": [
+      "We are the trusted food commodities Trading Company based in Bangkok, Thailand with our associates partners HUGTS Company Ltd. Bangkok, Thailand since 2004, committed to delivering high quality products to the market across the region.",
+      "Our expertise spans the procurement and distribution of rice, wheat flour, pulses and other food products, source directly from reliable exporters by maintaining strict quality control standards and efficient supply chain practices. We ensure consistency, freshness and competitive pricing in every shipment."
+    ],
+    "goal": {
+      "title": "Our goal",
+      "text": "To consistently deliver high-quality food commodities through efficient sourcing, strict quality control and dependable supply chain management, while building long-term partnerships and contributing to sustainable food security."
+    },
+    "mission": {
+      "title": "Our mission",
+      "text": "To source and supply high-quality food commodities through trusted partnerships, efficient operations and ethical practices, ensuring reliability, value and long-term satisfaction for our customers."
+    },
+    "vision": {
+      "title": "Our vision",
+      "text": "To establish ourselves as a leading and trusted food commodities trading company, recognized for uncompromising quality, operational excellence and integrity across regional and global markets."
+    },
+    "cta": "Ready to order? Add products to your quote list and we will reply directly."
   }
 }

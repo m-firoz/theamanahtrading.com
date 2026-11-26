@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
-import '@fontsource-variable/fraunces';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/barlow-condensed/600.css';
 import '@fontsource/noto-sans-thai/400.css';
 import '@fontsource/noto-sans-thai/600.css';
 import '@fontsource/noto-sans-khmer/400.css';
@@ -37,8 +38,9 @@ const abs = (l: Locale) => new URL(localePath(l, path), site.url).href;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={abs(locale)} />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#F5F7F9" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#FFFFFF" />
   </head>
   <body>
     <a class="skip" href="#main">{t('nav.skip')}</a>

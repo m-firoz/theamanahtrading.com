@@ -2,5 +2,6 @@
   "name": {
     "en": "Pulses & legumes"
   },
-  "order": 6
+  "order": 6,
+  "group": "pulses-snacks"
 }

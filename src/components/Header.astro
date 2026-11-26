@@ -1,5 +1,6 @@
 ---
-import { site } from '../config/site';
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-horizontal.png';
 import { locales, localeNames, localePath, useTranslations, type Locale } from '../i18n/config';
 import QuoteBadge from './QuoteBadge';
 interface Props { locale: Locale; path: string }
@@ -8,21 +9,20 @@ const t = useTranslations(locale);
 const links = [
   { href: localePath(locale, '/products/'), label: t('nav.products'), current: path.startsWith('/products') },
   { href: localePath(locale, '/') + '#how', label: t('nav.how') },
+  { href: localePath(locale, '/about/'), label: t('nav.about'), current: path.startsWith('/about') },
   { href: localePath(locale, '/') + '#contact', label: t('nav.contact') },
 ];
 const quoteHref = localePath(locale, '/quote/');
 ---
 <header class="site-header">
-  <div class="wrap">
+  <div class="wrap bar">
     <a class="brand" href={localePath(locale, '/')} aria-label={t('nav.home')}>
-      <img src="/favicon.svg" alt="" width="34" height="34" />
-      <span>{site.name}</span>
+      <Image src={logo} alt="" height={108} widths={[160, 320]} sizes="160px" format="png" loading="eager" />
     </a>
     <nav class="nav desktop" aria-label="Main">
       {links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>)}
-      <a class="btn small" href={quoteHref}>{t('nav.quote')}<QuoteBadge client:load /></a>
     </nav>
-    <details class="lang">
+    <details class="lang desktop-lang">
       <summary aria-label={t('nav.language')}>{localeNames[locale]}</summary>
       <ul>
         {locales.map((l) => (
@@ -30,11 +30,16 @@ const quoteHref = localePath(locale, '/quote/');
         ))}
       </ul>
     </details>
+    <a class="btn small quote-btn desktop-quote" href={quoteHref}>{t('nav.quote')}<QuoteBadge client:load /></a>
+    <a class="quote-pill" href={quoteHref}>{t('nav.quoteShort')}<QuoteBadge client:load /></a>
     <div class="menu-wrap">
       <details class="menu">
-        <summary>{t('nav.menu')}</summary>
+        <summary aria-label={t('nav.menu')}><span class="burger" aria-hidden="true"></span></summary>
         <div class="panel">
           {links.map((l) => <a href={l.href}>{l.label}</a>)}
+          <div class="langs" role="group" aria-label={t('nav.language')}>
+            {locales.map((l) => <a href={localePath(l, path)} lang={l} hreflang={l} aria-current={l === locale ? 'true' : undefined}>{localeNames[l]}</a>)}
+          </div>
           <a class="btn small" href={quoteHref}>{t('nav.quote')}</a>
         </div>
       </details>

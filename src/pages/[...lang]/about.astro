@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getUi, localeParams, localePath, useTranslations } from '../../i18n/config';
+
+export function getStaticPaths() { return localeParams(); }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const ui = getUi(locale);
+const pillars = [ui.about.goal, ui.about.mission, ui.about.vision];
+---
+<Base locale={locale} path="/about/" title={t('about.title')}>
+  <section class="section">
+    <div class="wrap about-grid">
+      <div>
+        <h1>{t('about.title')}</h1>
+        {ui.about.intro.map((p: string) => <p>{p}</p>)}
+      </div>
+      <ul class="about-facts">
+        {ui.about.facts.map((f: { title: string; text: string }) => (
+          <li><strong>{f.title}</strong><span>{f.text}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <section class="section pillars-band">
+    <div class="wrap">
+      <ul class="pillars">
+        {pillars.map((p: { title: string; text: string }) => (
+          <li><h2>{p.title}</h2><p>{p.text}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <section class="section about-cta">
+    <div class="wrap">
+      <p class="lead">{t('about.cta')}</p>
+      <a class="btn honey" href={localePath(locale, '/products/')}>{t('hero.quote')}</a>
+    </div>
+  </section>
+</Base>

@@ -2,5 +2,6 @@
   "name": {
     "en": "Spice blends & seasonings"
   },
-  "order": 4
+  "order": 4,
+  "group": "spices"
 }

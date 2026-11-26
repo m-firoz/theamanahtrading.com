@@ -2,5 +2,6 @@
   "name": {
     "en": "Ground spices & powders"
   },
-  "order": 3
+  "order": 3,
+  "group": "spices"
 }

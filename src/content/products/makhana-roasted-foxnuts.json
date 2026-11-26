@@ -1,0 +1,15 @@
+{
+  "sku": "SNK-002",
+  "name": "Makhana - Roasted Foxnuts",
+  "category": "snack-items",
+  "moq": {
+    "value": 12,
+    "unit": "ton"
+  },
+  "images": [
+    "makhana-roasted-foxnuts-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 40
+}

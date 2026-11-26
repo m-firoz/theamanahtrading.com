@@ -15,19 +15,21 @@ const products = defineCollection({
       value: z.number().positive(),
       unit: z.enum(['pcs', 'carton', 'pallet', 'kg', 'ton']),
     }),
-    images: z.array(z.string().min(1)).min(1), // file names in src/assets/products; the first is the main photo
+    images: z.array(z.string().min(1)).min(1), // file names in src/assets/products; only the first photo is used
     published: z.boolean().default(true),
     featured: z.boolean().default(false), // shown in the home page carousel
     order: z.number().default(100),
   }),
 });
 
-// Categories are maintained by the developer; names exist per language.
+// Categories are maintained by the developer. They are the detailed, internal list used in the CMS.
+// Each one belongs to one of a few broad groups, and only the groups are shown on the website.
 const categories = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/categories' }),
   schema: z.object({
     name: z.object({ en: z.string().min(1) }).catchall(z.string()),
     order: z.number().default(100),
+    group: z.enum(['rice', 'spices', 'herbs-vegetables', 'pulses-snacks', 'dairy']),
   }),
 });
 

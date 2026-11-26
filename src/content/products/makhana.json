@@ -1,0 +1,16 @@
+{
+  "sku": "SNK-003",
+  "name": "Makhana",
+  "category": "snack-items",
+  "unitWeight": "200 g / 250 g",
+  "moq": {
+    "value": 12,
+    "unit": "ton"
+  },
+  "images": [
+    "makhana-1.jpeg"
+  ],
+  "published": true,
+  "featured": false,
+  "order": 41
+}

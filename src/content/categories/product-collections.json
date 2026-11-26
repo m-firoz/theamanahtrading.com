@@ -2,5 +2,6 @@
   "name": {
     "en": "Product collections"
   },
-  "order": 9
+  "order": 9,
+  "group": "spices"
 }

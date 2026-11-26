@@ -6,42 +6,23 @@ import AddToQuote from './AddToQuote';
 interface Props { product: Product; locale: Locale }
 const { product: p, locale } = Astro.props;
 const t = useTranslations(locale);
-const many = p.images.length > 1;
+// "1 metric ton", "24 metric tons" (English plural; other languages fall back to the same unit word)
+const unit = p.moq.value === 1 ? t(`units.${p.moq.unit}`) : (t(`units.${p.moq.unit}_other`) !== `units.${p.moq.unit}_other` ? t(`units.${p.moq.unit}_other`) : t(`units.${p.moq.unit}`));
+// keep the number and its unit on one line, e.g. "5 kg, 10 kg"
+const packs = p.unitWeight ? p.unitWeight.replace(/(\d)\s+(?=\p{L})/gu, '$1\u00A0') : '-';
 ---
-<li class="pcard" id={p.slug} data-category={p.category}>
+<li class="pcard" id={p.slug} data-category={p.category} data-group={p.group}>
   <div class="pic">
-    {p.images.map((img, i) => (
-      <Image src={img} alt={i === 0 ? p.name : `${p.name} (${i + 1})`} widths={[240, 480]} sizes="(min-width: 700px) 240px, 45vw" format="webp" loading="lazy" data-photo={i} hidden={i !== 0} />
-    ))}
+    <Image src={p.image} alt={p.name} widths={[240, 480]} sizes="(min-width: 760px) 260px, 45vw" format="webp" loading="lazy" />
   </div>
-  {many && (
-    <div class="thumbs" role="group" aria-label={p.name}>
-      {p.images.map((img, i) => (
-        <button type="button" data-thumb={i} aria-pressed={i === 0 ? 'true' : 'false'} aria-label={`${t('products.photo')} ${i + 1}`}>
-          <Image src={img} alt="" widths={[64, 128]} sizes="44px" format="webp" loading="lazy" />
-        </button>
-      ))}
-    </div>
-  )}
+  <p class="cat">{t(`groups.${p.group}`)}</p>
   <h3>{p.name}</h3>
-  {p.description && <p class="desc">{p.description}</p>}
   <dl class="facts">
-    {p.unitWeight && <div><dt>{t('products.weight')}</dt><dd>{p.unitWeight}</dd></div>}
-    <div><dt>{t('products.moq')}</dt><dd>{p.moq.value} {t(`units.${p.moq.unit}`)}</dd></div>
+    <div><dt>{t('products.moq')}</dt><dd>{p.moq.value}&nbsp;{unit}</dd></div>
+    <div><dt>{t('products.weight')}</dt><dd>{packs}</dd></div>
   </dl>
   <div class="actions">
-    <span><span class="tag">{t('products.price')}</span></span>
-    <AddToQuote client:visible sku={p.sku} moq={p.moq.value} add={t('products.add')} inQuote={t('products.inQuote')} href={localePath(locale, '/quote/')} />
+    <AddToQuote client:visible sku={p.sku} moq={p.moq.value} add={t('products.add')} inQuote={t('products.inQuote')} inQuoteShort={t('products.inQuoteShort')} href={localePath(locale, '/quote/')} />
+    <p class="price">{t('products.price')}</p>
   </div>
 </li>
-<script>
-  // Thumbnails switch the large photo. Without JavaScript the first photo simply stays.
-  document.addEventListener('click', (e) => {
-    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-thumb]');
-    if (!b) return;
-    const card = b.closest('.pcard')!;
-    const i = b.dataset.thumb;
-    card.querySelectorAll<HTMLElement>('[data-photo]').forEach((img) => { img.hidden = img.dataset.photo !== i; });
-    card.querySelectorAll<HTMLElement>('[data-thumb]').forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.thumb === i)));
-  });
-</script>

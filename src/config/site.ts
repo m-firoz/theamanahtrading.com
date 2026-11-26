@@ -2,13 +2,14 @@
 // Replace the [PLACEHOLDER] values before launch.
 export const site = {
   name: 'The Amanah Trading',
+  legalName: 'The Amanah Trading Co., Ltd.',
   url: 'https://theamanahtrading.com',
   email: 'info@theamanahtrading.com',
-  phoneDisplay: '[PHONE NUMBER]',
-  phoneTel: '+66000000000', // international format, no spaces
-  hours: '[OPENING HOURS]',
+  phoneDisplay: '+66 90 094 7292',
+  phoneTel: '+66900947292', // international format, no spaces
+  hours: '8:00 am – 8:00 pm',
   timeZone: 'Asia/Bangkok',
-  timeZoneLabel: 'Thailand time (UTC+7)',
+  timeZoneLabel: 'Thailand time, UTC+7',
   address: '',
   // Public Web3Forms access key (see README). Empty = test mode in development.
   formKey: import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '',

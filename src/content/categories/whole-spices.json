@@ -2,5 +2,6 @@
   "name": {
     "en": "Whole spices"
   },
-  "order": 2
+  "order": 2,
+  "group": "spices"
 }

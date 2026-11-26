@@ -1,7 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
-import ProductCarousel from '../../components/ProductCarousel.astro';
+import hero from '../../assets/home/hero-market.jpg';
+import tileRice from '../../assets/home/tile-rice.jpg';
+import tileSpices from '../../assets/home/tile-spices.jpg';
+import tileRange from '../../assets/home/tile-range.jpg';
 import { site } from '../../config/site';
 import { getUi, localeParams, localePath, useTranslations } from '../../i18n/config';
 import { getProducts } from '../../lib/products';
@@ -11,65 +14,69 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const ui = getUi(locale);
 const products = await getProducts();
-const picked = products.filter((p) => p.featured);
-const selection = (picked.length ? picked : products).slice(0, 8);
-const art = products.slice(0, 3);
+const count = (g: string) => products.filter((p) => p.group === g).length;
+const tiles = [
+  { img: tileRice, cls: 'rice', title: t('groups.rice'), count: t('supply.count', { n: count('rice') }), href: localePath(locale, '/products/') + '?group=rice' },
+  { img: tileSpices, cls: 'spices', title: t('groups.spices'), count: t('supply.count', { n: count('spices') }), href: localePath(locale, '/products/') + '?group=spices' },
+  { img: tileRange, cls: 'range', title: t('supply.range'), count: t('supply.all', { n: products.length }), href: localePath(locale, '/products/') },
+];
 ---
 <Base locale={locale} path="/">
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
+    <Image class="hero-bg" src={hero} alt="" widths={[900, 1600, 2400]} sizes="100vw" format="webp" loading="eager" />
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
         <h1>{t('hero.title')}</h1>
         <p>{t('hero.text')}</p>
-        <div class="hero-actions">
-          <a class="btn" href={localePath(locale, '/products/')}>{t('hero.quote')}</a>
-          <a class="btn ghost" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
-        </div>
-        <ul class="proof">
-          {ui.hero.facts.map((f: { title: string; text: string }) => (
-            <li><strong>{f.title}</strong><span>{f.text}</span></li>
-          ))}
-        </ul>
       </div>
-      <div class="hero-panel" aria-hidden="true">
-        <div class="hero-art">
-          {art.map((p) => (
-            <div><Image src={p.image} alt="" widths={[200, 400]} sizes="(min-width: 800px) 14vw, 28vw" format="webp" loading="lazy" /></div>
-          ))}
-        </div>
+      <div class="hero-cta">
+        <a class="hero-btn" href={localePath(locale, '/products/')}>{t('hero.quote')}</a>
       </div>
+      <ul class="hero-facts">
+        {ui.hero.facts.map((f: { title: string; text: string }) => (
+          <li><strong>{f.title}</strong><span>{f.text}</span></li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <section class="section" id="how">
+  <section class="section">
     <div class="wrap">
-      <h2>{ui.how.title}</h2>
-      <ol class="steps">
+      <h2 class="center">{t('supply.title')}</h2>
+      <ul class="tiles">
+        {tiles.map((x) => (
+          <li>
+            <a class={`tile ${x.cls}`} href={x.href}>
+              <Image src={x.img} alt="" widths={[600, 1000]} sizes="(min-width: 800px) 33vw, 100vw" format="webp" loading="lazy" />
+              <span class="tile-text"><strong>{x.title}</strong><small>{x.count}</small></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section how" id="how">
+    <div class="wrap">
+      <h2 class="center">{ui.how.title}</h2>
+      <ol class="how-steps">
         {ui.how.steps.map((s: { title: string; text: string }) => (
-          <li><h3>{s.title}</h3><p style="margin:0">{s.text}</p></li>
+          <li><span class="num" aria-hidden="true"></span><h3>{s.title}</h3><p>{s.text}</p></li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="section band">
-    <div class="wrap">
-      <ProductCarousel products={selection} locale={locale} />
-    </div>
-  </section>
-
   <section class="section contact-band" id="contact">
     <div class="wrap">
-      <h2>{t('contact.title')}</h2>
-      <p>{t('contact.text')}</p>
-      <dl class="contact-grid">
-        <div><dt>{t('contact.phone')}</dt><dd><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></dd></div>
-        <div><dt>{t('contact.email')}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
-        <div><dt>{t('contact.hours')}</dt><dd>{site.hours} <small>({site.timeZoneLabel})</small></dd></div>
-      </dl>
-      <div class="contact-actions">
-        <a class="btn sky" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
-        <a class="btn outline-light" href={`mailto:${site.email}`}>{t('contact.email')}</a>
+      <h2 class="center">{t('contact.title')}</h2>
+      <p class="center lead">{t('contact.text')}</p>
+      <div class="contact-cols">
+        <div class="contact-actions">
+          <a class="btn honey" href={`tel:${site.phoneTel}`}>{t('hero.call')}: {site.phoneDisplay}</a>
+          <a class="btn outline-light" href={`mailto:${site.email}`}>{t('contact.emailUs')}: {site.email}</a>
+        </div>
+        <p class="hours">{t('contact.hours')}: {site.hours} ({site.timeZoneLabel})</p>
       </div>
     </div>
   </section>
