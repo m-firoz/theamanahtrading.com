@@ -15,6 +15,7 @@ type Props = {
   units: Record<string, string>;
   site: Site;
   countries: string[];
+  countryNames: Record<string, string>; // display names; the English value is what gets sent
   hrefs: { products: string; privacy: string };
   dev: boolean;
 };
@@ -39,7 +40,7 @@ function formatDate(iso: string, locale: string, timeZone: string) {
   catch { return new Intl.DateTimeFormat('en', opts).format(new Date(iso)); }
 }
 
-export default function QuoteList({ locale, catalog, labels: L, units, site, countries, hrefs, dev }: Props) {
+export default function QuoteList({ locale, catalog, labels: L, units, site, countries, countryNames, hrefs, dev }: Props) {
   const byKey = Object.fromEntries(catalog.map((c) => [c.sku, c]));
   const [ready, setReady] = useState(false);
   const [items, setItems] = useState<QuoteItem[]>([]);
@@ -161,12 +162,12 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
         <p className="muted" style={{ margin: 0 }}>{L.reference}</p>
         <p className="ref">{conf.ref}</p>
         <dl>
-          <dt>{L.sentAt}</dt><dd>{formatDate(conf.iso, locale, site.timeZone)} ({site.timeZoneLabel})</dd>
+          <dt>{L.sentAt}</dt><dd>{formatDate(conf.iso, locale, site.timeZone)} ({L.timeZone})</dd>
           <dt>{L.name}</dt><dd>{conf.buyer.name}</dd>
           <dt>{L.company}</dt><dd>{conf.buyer.company}</dd>
           <dt>{L.email}</dt><dd>{conf.buyer.email}</dd>
           {conf.buyer.phone && (<><dt>{L.phone}</dt><dd>{conf.buyer.phone}</dd></>)}
-          <dt>{L.country}</dt><dd>{conf.buyer.country}</dd>
+          <dt>{L.country}</dt><dd>{countryNames[conf.buyer.country] ?? conf.buyer.country}</dd>
           {conf.buyer.message && (<><dt>{L.message}</dt><dd>{conf.buyer.message}</dd></>)}
         </dl>
         <h2 style={{ fontSize: '1.2rem' }}>{L.requested}</h2>
@@ -182,7 +183,7 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
         </div>
         <p style={{ marginTop: '1rem' }}><strong>{L.statement}</strong></p>
         <p className="no-print">{L.keepRecord}</p>
-        <p>{site.name} · {site.phoneDisplay} · {site.email} · {L.hours}: {site.hours} ({site.timeZoneLabel})</p>
+        <p>{site.name} · {site.phoneDisplay} · {site.email} · {L.hours}: {L.days}, {L.time} ({L.timeZone})</p>
         <div className="row no-print">
           <button type="button" className="btn" onClick={() => window.print()}>{L.print}</button>
           <button type="button" className="btn ghost" onClick={copyList}>{copied ? L.copied : L.copy}</button>
@@ -241,7 +242,7 @@ export default function QuoteList({ locale, catalog, labels: L, units, site, cou
           <input className="input" type="tel" autoComplete="tel" value={form.phone} onChange={(e) => set('phone', e.target.value)} /></label>
         <label className="field full">{L.country}
           <select className="input" value={form.country} onChange={(e) => set('country', e.target.value)}>
-            {countries.map((c) => <option key={c}>{c}</option>)}
+            {countries.map((c) => <option key={c} value={c}>{countryNames[c] ?? c}</option>)}
           </select></label>
         <label className="field full">{L.message}
           <textarea className="input" value={form.message} onChange={(e) => set('message', e.target.value)} /></label>

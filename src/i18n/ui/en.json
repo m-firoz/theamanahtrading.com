@@ -13,7 +13,8 @@
     "skip": "Skip to content",
     "home": "The Amanah Trading, home",
     "about": "About",
-    "quoteShort": "Quote"
+    "quoteShort": "Quote",
+    "main": "Main"
   },
   "hero": {
     "title": "Wholesale products for retailers and traders across Southeast Asia",
@@ -47,10 +48,11 @@
   },
   "groups": {
     "rice": "Rice",
-    "spices": "Spices",
-    "herbs-vegetables": "Herbs & vegetables",
-    "pulses-snacks": "Pulses & snacks",
-    "dairy": "Dairy"
+    "spices": "Spices & seasonings",
+    "herbs": "Dried herbs & garlic",
+    "pulses": "Pulses & lentils",
+    "snacks": "Snacks",
+    "ghee": "Ghee"
   },
   "how": {
     "title": "How ordering works",
@@ -141,7 +143,10 @@
     "copied": "Copied",
     "newQuote": "Start a new quote",
     "contactUs": "Contact us",
-    "hours": "Hours"
+    "hours": "Hours",
+    "days": "7 days a week",
+    "time": "8:00 am – 8:00 pm",
+    "timeZone": "Thailand time, UTC+7"
   },
   "contact": {
     "title": "Talk to us",
@@ -149,7 +154,10 @@
     "phone": "Phone",
     "email": "Email",
     "hours": "Hours",
-    "emailUs": "Email us"
+    "days": "7 days a week",
+    "emailUs": "Email us",
+    "time": "8:00 am – 8:00 pm",
+    "timeZone": "Thailand time, UTC+7"
   },
   "consent": {
     "title": "Your privacy choices",
@@ -223,8 +231,8 @@
       }
     ],
     "intro": [
-      "We are the trusted food commodities Trading Company based in Bangkok, Thailand with our associates partners HUGTS Company Ltd. Bangkok, Thailand since 2004, committed to delivering high quality products to the market across the region.",
-      "Our expertise spans the procurement and distribution of rice, wheat flour, pulses and other food products, source directly from reliable exporters by maintaining strict quality control standards and efficient supply chain practices. We ensure consistency, freshness and competitive pricing in every shipment."
+      "We are a trusted food commodity trading company based in Bangkok, Thailand. Together with our associate partner, HUGTS Company Ltd. in Bangkok, we have been delivering high-quality products to markets across the region since 2004.",
+      "Our expertise spans the procurement and distribution of rice, wheat flour, pulses and other food products, sourced directly from reliable exporters. By maintaining strict quality control standards and efficient supply chain practices, we ensure consistency, freshness and competitive pricing in every shipment."
     ],
     "goal": {
       "title": "Our goal",
@@ -239,5 +247,15 @@
       "text": "To establish ourselves as a leading and trusted food commodities trading company, recognized for uncompromising quality, operational excellence and integrity across regional and global markets."
     },
     "cta": "Ready to order? Add products to your quote list and we will reply directly."
+  },
+  "countries": {
+    "Thailand": "Thailand",
+    "Malaysia": "Malaysia",
+    "Vietnam": "Vietnam",
+    "Cambodia": "Cambodia",
+    "Laos": "Laos",
+    "Philippines": "Philippines",
+    "Indonesia": "Indonesia",
+    "Other": "Other"
   }
 }

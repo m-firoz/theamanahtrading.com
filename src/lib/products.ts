@@ -15,7 +15,7 @@ function findImage(file: string): ImageMetadata | undefined {
 }
 
 /** Broad groups shown on the website, in display order. Names live in the UI strings (groups.*). */
-export const groupIds = ['rice', 'spices', 'herbs-vegetables', 'pulses-snacks', 'dairy'] as const;
+export const groupIds = ['rice', 'spices', 'herbs', 'pulses', 'snacks', 'ghee'] as const;
 export type GroupId = (typeof groupIds)[number];
 
 export type Category = { id: string; names: Record<string, string>; order: number; group: GroupId };

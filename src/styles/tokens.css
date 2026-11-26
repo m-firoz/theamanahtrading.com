@@ -16,7 +16,7 @@
 
   --font-body: 'Inter Variable', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans Lao', system-ui, sans-serif;
   --font-display: 'Playfair Display', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans Lao', Georgia, serif;
-  --font-button: 'Barlow Condensed', 'Inter Variable', system-ui, sans-serif;
+  --font-button: 'Barlow Condensed', 'Inter Variable', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans Lao', system-ui, sans-serif;
 
   --radius: 6px;
   --radius-card: 10px;

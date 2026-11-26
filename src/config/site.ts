@@ -7,7 +7,7 @@ export const site = {
   email: 'info@theamanahtrading.com',
   phoneDisplay: '+66 90 094 7292',
   phoneTel: '+66900947292', // international format, no spaces
-  hours: '8:00 am – 8:00 pm',
+  hours: '8:00 am – 8:00 pm', // used in the English email to info@; the page text is contact.time / quote.time in the language files
   timeZone: 'Asia/Bangkok',
   timeZoneLabel: 'Thailand time, UTC+7',
   address: '',

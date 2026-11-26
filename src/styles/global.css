@@ -59,7 +59,7 @@ details.lang { position: relative; }
 details.lang ul { position: absolute; right: 0; top: calc(100% + 6px); margin: 0; padding: 0.4rem; list-style: none; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); min-width: 12rem; box-shadow: 0 8px 24px rgba(23, 47, 70, 0.12); }
 details.lang li a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; }
 details.lang li a:hover, details.lang li a[aria-current='true'] { background: var(--bg); font-weight: 600; }
-.menu-wrap, .quote-pill { display: none; }
+.menu-wrap, .quote-icon { display: none; }
 .burger, .burger::before, .burger::after { display: block; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; content: ''; }
 .burger { position: relative; }
 .burger::before { position: absolute; top: -6px; }
@@ -67,11 +67,15 @@ details.lang li a:hover, details.lang li a[aria-current='true'] { background: va
 @media (max-width: 860px) {
   .nav.desktop, .desktop-lang, .desktop-quote { display: none; }
   .site-header .bar { gap: 0.6rem; min-height: 4rem; }
-  .brand img { height: 44px; }
+  .brand { flex-shrink: 0; }
+  /* 40px tall when there is room; on narrow phones the whole logo scales down (never squeezed),
+     keeping at least 16px between the logo and the quote and menu buttons. */
+  .brand img { width: min(257px, calc(100vw - 2 * var(--space) - 117px)); height: auto; }
   .menu-wrap { display: block; position: relative; }
   .menu-wrap details.menu > summary { padding: 0 0.8rem; }
-  .quote-pill { display: inline-flex; align-items: center; min-height: 40px; padding: 0 0.9rem; border-radius: 999px; background: var(--honey); color: var(--accent); font-weight: 700; font-size: 0.95rem; text-decoration: none; }
-  .quote-pill .badge { margin-left: 0.35rem; background: var(--accent); color: #fff; }
+  .quote-icon { display: inline-flex; position: relative; flex-shrink: 0; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius); background: var(--honey); color: var(--accent); }
+  .quote-icon:hover { background: var(--honey-hover); }
+  .quote-icon .badge { position: absolute; top: -6px; right: -6px; margin: 0; min-width: 1.25rem; height: 1.25rem; font-size: 0.72rem; background: var(--accent); color: #fff; border: 2px solid #fff; }
   details.menu .panel { position: absolute; right: 0; top: calc(100% + 8px); background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 0.9rem 1rem; display: grid; gap: 0.7rem; width: min(86vw, 19rem); box-shadow: 0 8px 24px rgba(23, 47, 70, 0.16); }
   details.menu .panel > a:not(.btn) { text-decoration: none; font-weight: 600; padding: 0.25rem 0; }
   .langs { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
@@ -99,6 +103,7 @@ details.lang li a:hover, details.lang li a[aria-current='true'] { background: va
   .hero-facts { margin-top: 1.75rem; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
   .hero-facts strong { font-size: 1.15rem; }
   .hero-facts span { font-size: 0.85rem; }
+  .hero-facts li:nth-child(n + 3) { display: none; } /* phone: keep 7 markets and 20+ years only */
 }
 
 /* What we supply */
@@ -114,7 +119,7 @@ details.lang li a:hover, details.lang li a[aria-current='true'] { background: va
 @media (max-width: 760px) {
   .tiles { grid-template-columns: 1fr; gap: 1rem; }
   .tile { aspect-ratio: 8 / 5; }
-  .tile.range { --pos: 0% 8%; }
+  .tile.range { --pos: 0% 50%; } /* phone: jar shelf fully in view */
 }
 
 /* How ordering works */

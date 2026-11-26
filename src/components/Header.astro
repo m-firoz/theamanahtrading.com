@@ -19,7 +19,7 @@ const quoteHref = localePath(locale, '/quote/');
     <a class="brand" href={localePath(locale, '/')} aria-label={t('nav.home')}>
       <Image src={logo} alt="" height={108} widths={[160, 320]} sizes="160px" format="png" loading="eager" />
     </a>
-    <nav class="nav desktop" aria-label="Main">
+    <nav class="nav desktop" aria-label={t('nav.main')}>
       {links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>)}
     </nav>
     <details class="lang desktop-lang">
@@ -31,7 +31,12 @@ const quoteHref = localePath(locale, '/quote/');
       </ul>
     </details>
     <a class="btn small quote-btn desktop-quote" href={quoteHref}>{t('nav.quote')}<QuoteBadge client:load /></a>
-    <a class="quote-pill" href={quoteHref}>{t('nav.quoteShort')}<QuoteBadge client:load /></a>
+    <a class="quote-icon" href={quoteHref} aria-label={t('nav.quote')}>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4.5V3h6v1.5" /><path d="M9 10h6M9 14h6M9 18h3" />
+      </svg>
+      <QuoteBadge client:load />
+    </a>
     <div class="menu-wrap">
       <details class="menu">
         <summary aria-label={t('nav.menu')}><span class="burger" aria-hidden="true"></span></summary>

@@ -21,7 +21,7 @@ const { name, email, phoneDisplay, phoneTel, hours, timeZone, timeZoneLabel, for
   <section class="section">
     <div class="wrap">
       <h1 class="no-print">{t('quote.title')}</h1>
-      <QuoteList client:load locale={locale} catalog={catalog} labels={ui.quote} units={ui.units}
+      <QuoteList client:load locale={locale} catalog={catalog} labels={ui.quote} countryNames={ui.countries} units={ui.units}
         site={{ name, email, phoneDisplay, phoneTel, hours, timeZone, timeZoneLabel, formKey }}
         countries={[...countries]}
         hrefs={{ products: localePath(locale, '/products/'), privacy: localePath(locale, '/privacy/') }}

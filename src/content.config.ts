@@ -29,7 +29,7 @@ const categories = defineCollection({
   schema: z.object({
     name: z.object({ en: z.string().min(1) }).catchall(z.string()),
     order: z.number().default(100),
-    group: z.enum(['rice', 'spices', 'herbs-vegetables', 'pulses-snacks', 'dairy']),
+    group: z.enum(['rice', 'spices', 'herbs', 'pulses', 'snacks', 'ghee']),
   }),
 });
 

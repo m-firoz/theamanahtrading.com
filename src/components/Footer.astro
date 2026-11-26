@@ -33,7 +33,7 @@ const t = useTranslations(locale);
         <ul>
           <li><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></li>
           <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-          <li>{site.hours} ({site.timeZoneLabel})</li>
+          <li>{t('contact.days')}, {t('contact.time')} ({t('contact.timeZone')})</li>
         </ul>
       </div>
     </div>
